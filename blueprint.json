@@ -22,7 +22,7 @@
         "label": "ipsec"
       }
     },
-    "timestamp": "2017-11-16T18:14:44+11:00"
+    "timestamp": "2017-11-16T18:22:23+11:00"
   },
   "software": {
     "base": {
@@ -38,6 +38,12 @@
         "recommended": 96
       }
     },
+    "constants": [
+      {
+        "name": "backup_support",
+        "value": "true"
+      }
+    ],
     "actionators": [
       {
         "name": "add_site_vpn",
@@ -281,6 +287,80 @@
         "script": {
           "language": "sh"
         }
+      },
+      {
+        "name": "rm_vpn",
+        "label": "Remove VPN",
+        "return_type": "none",
+        "variables": [
+          {
+            "name": "vpn_name",
+            "mandatory": true,
+            "input": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "vpn_status",
+        "return_type": "json",
+        "variables": [
+          {
+            "name": "vpn_name",
+            "input": {
+              "type": "string",
+              "placeholder": "optional lists all without"
+            }
+          }
+        ]
+      },
+      {
+        "name": "stop_vpn",
+        "label": "Stop VPN",
+        "return_type": "none",
+        "variables": [
+          {
+            "name": "vpn_name",
+            "mandatory": true,
+            "input": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "start_vpn",
+        "label": "Start Vpn",
+        "return_type": "json",
+        "variables": [
+          {
+            "name": "vpn_name",
+            "mandatory": true,
+            "input": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "disable_vpn",
+        "label": "Disable vpn",
+        "return_type": "json",
+        "variables": [
+          {
+            "name": "vpn_name",
+            "input": {
+              "type": "string",
+              "label": "VPN name"
+            }
+          }
+        ]
+      },
+      {
+        "name": "list_vpns",
+        "label": "List VPNs",
+        "return_type": "json"
       }
     ],
     "configurators": [
