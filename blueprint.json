@@ -15,8 +15,294 @@
         "level": "alpha",
         "patch": 0
       }
-    }
+    },
+    "software": {
+      "display": {
+        "title": "Ipsec vpn",
+        "label": "ipsec"
+      }
+    },
+    "timestamp": "2017-11-16T18:14:44+11:00"
   },
   "software": {
+    "base": {
+      "name": "ipsec",
+      "publisher_namespace": "EnginesSystem",
+      "type_path": "ivpn",
+      "service_handle_field": "vpn_name",
+      "parent_image": "engines/servicebase",
+      "run_as_user": "ivpn",
+      "deployment_type": "worker",
+      "memory": {
+        "required": 96,
+        "recommended": 96
+      }
+    },
+    "actionators": [
+      {
+        "name": "add_site_vpn",
+        "label": "add site vpn",
+        "return_type": "json",
+        "variables": [
+          {
+            "name": "vpn_name",
+            "mandatory": true,
+            "input": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "remote_site",
+            "mandatory": true,
+            "input": {
+              "type": "string",
+              "label": "remote_endpoint",
+              "hint": "x.x.x.x"
+            }
+          },
+          {
+            "name": "remote_lan",
+            "mandatory": true,
+            "input": {
+              "type": "string",
+              "label": "Remote  lan"
+            }
+          },
+          {
+            "name": "remote_subnet",
+            "mandatory": true,
+            "input": {
+              "type": "string",
+              "label": "remote subnet"
+            }
+          },
+          {
+            "name": "remote_id",
+            "input": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ike_version",
+            "input": {
+              "type": "select",
+              "collection": {
+                "items": {
+                  "ikev1": "IKEv1",
+                  "ikev2": "IKv2"
+                }
+              }
+            }
+          },
+          {
+            "name": "my_id",
+            "input": {
+              "type": "string",
+              "label": "My ID"
+            }
+          },
+          {
+            "name": "psk",
+            "value": "_Engines_System(random(64))",
+            "mandatory": true,
+            "input": {
+              "type": "string",
+              "label": "Pre Shared Key"
+            }
+          },
+          {
+            "name": "phase1_enc_al",
+            "mandatory": true,
+            "input": {
+              "type": "select",
+              "label": "Phase 1 Encryption Algorithm",
+              "collection": {
+                "items": {
+                  "aes256": "AES256",
+                  "aes128": "AES128",
+                  "aes192": "AES192",
+                  "3DES": "3DES"
+                }
+              }
+            }
+          },
+          {
+            "name": "phase1_hash",
+            "mandatory": true,
+            "input": {
+              "type": "select",
+              "label": "Phase 1 Hash Algorithm",
+              "collection": {
+                "items": {
+                  "sha1": "SHA1",
+                  "sha256": "SHA256",
+                  "sha384": "SHA384"
+                }
+              }
+            }
+          },
+          {
+            "name": "phase1_dh_group",
+            "mandatory": true,
+            "input": {
+              "type": "select",
+              "label": " DH Group",
+              "collection": {
+                "items": {
+                  "dhgroup2": "2 (1024 bit)",
+                  "dhgroup5": "5 (1563 bit)",
+                  "dhgroup14": "14 (2048 bit)",
+                  "dhgrop15": "15 (3072 bit)"
+                }
+              }
+            }
+          },
+          {
+            "name": "disable_rekey ",
+            "value": "false",
+            "input": {
+              "type": "boolean",
+              "label": "Disable rekey"
+            }
+          },
+          {
+            "name": "respond_only",
+            "value": "false",
+            "input": {
+              "type": "boolean",
+              "title": "Respond Only"
+            }
+          },
+          {
+            "name": "nat_t",
+            "value": "false",
+            "input": {
+              "type": "boolean",
+              "label": "Force Nat Traversal"
+            }
+          },
+          {
+            "name": "dpd",
+            "value": "true",
+            "input": {
+              "type": "boolean",
+              "label": "Dead peer detection"
+            }
+          },
+          {
+            "name": "dpd_delay",
+            "input": {
+              "type": "integer",
+              "label": "Dead Peer Detection Delay"
+            }
+          },
+          {
+            "name": "dpd_max",
+            "input": {
+              "type": "integer",
+              "title": "Max failures"
+            }
+          },
+          {
+            "name": "dpd_action",
+            "input": {
+              "type": "select",
+              "collection": {
+                "items": {
+                  "restart": "restart",
+                  "clear": "clear"
+                }
+              }
+            }
+          },
+          {
+            "name": "ike_life",
+            "value": "36000",
+            "input": {
+              "type": "integer",
+              "label": "IKE key lifetime"
+            }
+          },
+          {
+            "name": "phase2_enc_al",
+            "mandatory": true,
+            "input": {
+              "type": "select",
+              "label": "Phase 2 Encryption",
+              "collection": {
+                "items": {
+                  "aes": "AES",
+                  "3des": "3DES"
+                }
+              }
+            }
+          },
+          {
+            "name": "phase2_hash",
+            "mandatory": true,
+            "input": {
+              "type": "select",
+              "label": "Phase 2 Hash Algorithm",
+              "collection": {
+                "items": {
+                  "sha1": "SHA1",
+                  "sha256": "SHA256",
+                  "sha384": "SHA384"
+                }
+              }
+            }
+          },
+          {
+            "name": "pfs",
+            "value": "off",
+            "input": {
+              "type": "select",
+              "title": "PFS Group",
+              "collection": {
+                "items": {
+                  "off": "off",
+                  "1": "1 (768 bit)",
+                  "2": "2 (1024 bit)",
+                  "5": "5 (1536 bit)",
+                  "14": "14 (2048 bit)"
+                }
+              }
+            }
+          },
+          {
+            "name": "sa_life",
+            "value": "3600",
+            "input": {
+              "type": "integer",
+              "label": "SA lifetime"
+            }
+          }
+        ],
+        "script": {
+          "language": "sh"
+        }
+      }
+    ],
+    "configurators": [
+      {
+        "name": "enable_user_vpn",
+        "label": "Add user VPN",
+        "enable_logging": true,
+        "variables": [
+          {
+            "name": "enable_user_vpn",
+            "value": "false",
+            "mandatory": true,
+            "input": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "set_script": {
+          "language": "sh",
+          "content": "#!/bin/bash\r\n\r\n. /home/engines/functions/params_to_env.sh\r\nparams_to_env\r\n\r\n\r\nrequired_values=\"enable_user_vpn\"\r\ncheck_required_values\r\n\r\nif $test enable_user_vpn = true\r\n then\r\n     touch /home/ivpn/entries/user/\r\n else\r\n      rm /home/ivpn/entries/user/\r\nfi\r\n\r\necho \"Success\"\r\nexit 0\r\n"
+        }
+      }
+    ]
   }
 }
