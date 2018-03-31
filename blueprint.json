@@ -22,7 +22,7 @@
         "label": "ipsec"
       }
     },
-    "timestamp": "2018-03-31T13:31:59+11:00"
+    "timestamp": "2018-03-31T14:21:34+11:00"
   },
   "software": {
     "base": {
@@ -363,7 +363,7 @@
         "return_type": "json"
       },
       {
-        "name": "add_user_vpn",
+        "name": "add_vpn_user",
         "label": "Add VPN user",
         "return_type": "json",
         "enable_logging": true,
@@ -398,7 +398,7 @@
         }
       },
       {
-        "name": "disable_user_vpn",
+        "name": "disable_vpn_user",
         "label": "Disable User",
         "return_type": "json",
         "variables": [
@@ -431,7 +431,7 @@
         }
       },
       {
-        "name": "rm_user_vpn",
+        "name": "rm_vpn_user",
         "label": "Remove VPN user",
         "return_type": "json",
         "enable_logging": true,
