@@ -22,7 +22,7 @@
         "label": "ipsec"
       }
     },
-    "timestamp": "2018-03-31T11:41:04+11:00"
+    "timestamp": "2018-03-31T12:25:52+11:00"
   },
   "software": {
     "base": {
@@ -370,10 +370,10 @@
         "variables": [
           {
             "name": "vpn_name",
-            "value": "Username",
             "mandatory": true,
             "input": {
               "type": "string",
+              "label": "Username",
               "validation": {
                 "pattern": "^[a-zA-Z]+$"
               }
@@ -381,10 +381,10 @@
           },
           {
             "name": "password",
-            "value": "Password",
             "mandatory": true,
             "input": {
-              "type": "password_with_confirmation"
+              "type": "password_with_confirmation",
+              "label": "Password"
             }
           }
         ],
