@@ -22,7 +22,7 @@
         "label": "ipsec"
       }
     },
-    "timestamp": "2018-03-31T12:25:52+11:00"
+    "timestamp": "2018-03-31T13:31:59+11:00"
   },
   "software": {
     "base": {
@@ -463,6 +463,7 @@
             "mandatory": true,
             "input": {
               "type": "string",
+              "label": "Username",
               "validation": {
                 "pattern": "^[a-zA-Z]+$"
               }
@@ -473,6 +474,24 @@
             "input": {
               "type": "password_with_confirmation",
               "label": "Password"
+            }
+          }
+        ]
+      },
+      {
+        "name": "enable_vpn_user",
+        "label": "Enable VPN user",
+        "return_type": "json",
+        "variables": [
+          {
+            "name": "vpn_name",
+            "mandatory": true,
+            "input": {
+              "type": "string",
+              "label": "Username",
+              "validation": {
+                "pattern": "^[a-zA-Z]+$"
+              }
             }
           }
         ]
