@@ -22,7 +22,7 @@
         "label": "ipsec"
       }
     },
-    "timestamp": "2018-03-31T14:21:34+11:00"
+    "timestamp": "2018-04-03T09:22:44+10:00"
   },
   "software": {
     "base": {
@@ -46,7 +46,7 @@
     ],
     "actionators": [
       {
-        "name": "add_site_vpn",
+        "name": "add_site2site_vpn",
         "label": "add site vpn",
         "return_type": "json",
         "variables": [
@@ -62,16 +62,8 @@
             "mandatory": true,
             "input": {
               "type": "string",
-              "label": "remote_endpoint",
+              "label": "remote endpoint",
               "hint": "x.x.x.x"
-            }
-          },
-          {
-            "name": "remote_lan",
-            "mandatory": true,
-            "input": {
-              "type": "string",
-              "label": "Remote  lan"
             }
           },
           {
@@ -90,6 +82,7 @@
           },
           {
             "name": "ike_version",
+            "value": "2",
             "input": {
               "type": "select",
               "collection": {
@@ -98,13 +91,6 @@
                   "ikev2": "IKv2"
                 }
               }
-            }
-          },
-          {
-            "name": "my_id",
-            "input": {
-              "type": "string",
-              "label": "My ID"
             }
           },
           {
@@ -117,7 +103,7 @@
             }
           },
           {
-            "name": "phase1_enc_al",
+            "name": "phase1_enc",
             "mandatory": true,
             "input": {
               "type": "select",
@@ -148,7 +134,7 @@
             }
           },
           {
-            "name": "phase1_dh_group",
+            "name": "phase1_dh",
             "mandatory": true,
             "input": {
               "type": "select",
@@ -164,46 +150,51 @@
             }
           },
           {
-            "name": "disable_rekey ",
-            "value": "false",
+            "name": "rekey ",
+            "value": "no",
             "input": {
-              "type": "boolean",
-              "label": "Disable rekey"
+              "type": "select_with_input",
+              "label": "Disable rekey",
+              "collection": {
+                "items": {
+                  "no": "No",
+                  "yes": "Yes"
+                }
+              }
             }
           },
           {
             "name": "respond_only",
-            "value": "false",
+            "value": "start",
             "input": {
-              "type": "boolean",
-              "title": "Respond Only"
-            }
-          },
-          {
-            "name": "nat_t",
-            "value": "false",
-            "input": {
-              "type": "boolean",
-              "label": "Force Nat Traversal"
+              "type": "select",
+              "title": "Respond Only",
+              "collection": {
+                "items": {
+                  "start": "Start",
+                  "add": "Respond"
+                }
+              }
             }
           },
           {
             "name": "dpd",
             "value": "true",
             "input": {
-              "type": "boolean",
+              "type": "checkbox_boolean",
               "label": "Dead peer detection"
             }
           },
           {
             "name": "dpd_delay",
+            "value": "10",
             "input": {
               "type": "integer",
               "label": "Dead Peer Detection Delay"
             }
           },
           {
-            "name": "dpd_max",
+            "name": "dpd_timeout",
             "input": {
               "type": "integer",
               "title": "Max failures"
@@ -223,22 +214,23 @@
           },
           {
             "name": "ike_life",
-            "value": "36000",
+            "value": "3600",
             "input": {
               "type": "integer",
               "label": "IKE key lifetime"
             }
           },
           {
-            "name": "phase2_enc_al",
+            "name": "phase2_enc",
             "mandatory": true,
             "input": {
               "type": "select",
               "label": "Phase 2 Encryption",
               "collection": {
                 "items": {
-                  "aes": "AES",
-                  "3des": "3DES"
+                  "aes128": "AES 128",
+                  "3des": "3DES",
+                  "aes256": "AES  256"
                 }
               }
             }
@@ -277,7 +269,7 @@
           },
           {
             "name": "sa_life",
-            "value": "3600",
+            "value": "28800",
             "input": {
               "type": "integer",
               "label": "SA lifetime"
@@ -289,7 +281,7 @@
         }
       },
       {
-        "name": "rm_vpn",
+        "name": "rm_site2site_vpn",
         "label": "Remove VPN",
         "return_type": "none",
         "variables": [
@@ -303,7 +295,7 @@
         ]
       },
       {
-        "name": "vpn_status",
+        "name": "get_site2site_vpn",
         "return_type": "json",
         "variables": [
           {
@@ -316,7 +308,7 @@
         ]
       },
       {
-        "name": "stop_vpn",
+        "name": "stop_site2site_vpn",
         "label": "Stop VPN",
         "return_type": "none",
         "variables": [
@@ -330,7 +322,7 @@
         ]
       },
       {
-        "name": "start_vpn",
+        "name": "start_site2site_vpn",
         "label": "Start Vpn",
         "return_type": "json",
         "variables": [
@@ -344,7 +336,7 @@
         ]
       },
       {
-        "name": "disable_vpn",
+        "name": "disable_site2site_vpn",
         "label": "Disable vpn",
         "return_type": "json",
         "variables": [
@@ -358,7 +350,7 @@
         ]
       },
       {
-        "name": "list_vpns",
+        "name": "list_site2site_vpns",
         "label": "List VPNs",
         "return_type": "json"
       },
@@ -406,6 +398,7 @@
             "name": "vpn_name",
             "input": {
               "type": "string",
+              "label": "Username",
               "validation": {
                 "pattern": "^[a-zA-Z]+$"
               }
@@ -495,6 +488,21 @@
             }
           }
         ]
+      },
+      {
+        "name": "vpn_status",
+        "label": "VPN Status",
+        "return_type": "plain_text"
+      },
+      {
+        "name": "spd_entries",
+        "label": "Security Policies",
+        "return_type": "none"
+      },
+      {
+        "name": "sad_entries",
+        "label": "Security Associations",
+        "return_type": "none"
       }
     ],
     "configurators": [
