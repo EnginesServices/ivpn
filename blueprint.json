@@ -22,7 +22,7 @@
         "label": "ipsec"
       }
     },
-    "timestamp": "2018-04-03T09:29:20+10:00"
+    "timestamp": "2018-04-03T12:13:47+10:00"
   },
   "software": {
     "base": {
@@ -110,9 +110,9 @@
               "label": "Phase 1 Encryption Algorithm",
               "collection": {
                 "items": {
-                  "aes256": "AES256",
                   "aes128": "AES128",
                   "aes192": "AES192",
+                  "aes256": "AES256",
                   "3DES": "3DES"
                 }
               }
@@ -141,10 +141,11 @@
               "label": " DH Group",
               "collection": {
                 "items": {
+                  "dhgroup5": "5 (1536 bit)",
                   "dhgroup2": "2 (1024 bit)",
-                  "dhgroup5": "5 (1563 bit)",
                   "dhgroup14": "14 (2048 bit)",
-                  "dhgroup15": "16 (4096 bit)"
+                  "dhgroup15": "15 (3072 bit)",
+                  "dhgroup16": "16 (4096 bit)"
                 }
               }
             }
@@ -153,7 +154,7 @@
             "name": "rekey ",
             "value": "no",
             "input": {
-              "type": "select_with_input",
+              "type": "select",
               "label": "Disable rekey",
               "collection": {
                 "items": {
@@ -168,7 +169,8 @@
             "value": "start",
             "input": {
               "type": "select",
-              "title": "Respond Only",
+              "label": "Start",
+              "title": "Respond only or start",
               "collection": {
                 "items": {
                   "start": "Start",
@@ -252,16 +254,16 @@
           },
           {
             "name": "pfs",
-            "value": "off",
+            "value": "5",
             "input": {
               "type": "select",
               "title": "PFS Group",
               "collection": {
                 "items": {
+                  "5": "5 (1536 bit)",
                   "off": "off",
                   "1": "1 (768 bit)",
                   "2": "2 (1024 bit)",
-                  "5": "5 (1536 bit)",
                   "14": "14 (2048 bit)",
                   "15": "15 (3076 bit)",
                   "16": "16 (4096 bit)"
