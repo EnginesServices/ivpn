@@ -22,7 +22,7 @@
         "label": "ipsec"
       }
     },
-    "timestamp": "2018-04-03T12:13:47+10:00"
+    "timestamp": "2018-04-03T12:17:15+10:00"
   },
   "software": {
     "base": {
@@ -151,7 +151,7 @@
             }
           },
           {
-            "name": "rekey ",
+            "name": "rekey",
             "value": "no",
             "input": {
               "type": "select",
