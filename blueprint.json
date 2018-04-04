@@ -22,7 +22,7 @@
         "label": "ipsec"
       }
     },
-    "timestamp": "2018-04-04T10:44:44+10:00"
+    "timestamp": "2018-04-04T10:54:25+10:00"
   },
   "software": {
     "base": {
@@ -141,11 +141,11 @@
               "label": " DH Group",
               "collection": {
                 "items": {
-                  "dhgroup5": "5 (1536 bit)",
-                  "dhgroup2": "2 (1024 bit)",
-                  "dhgroup14": "14 (2048 bit)",
-                  "dhgroup15": "15 (3072 bit)",
-                  "dhgroup16": "16 (4096 bit)"
+                  "modp1536": "5 (1536 bit)",
+                  "modp1024": "2 (1024 bit)",
+                  "modp2048": "14 (2048 bit)",
+                  "modp3072": "15 (3072 bit)",
+                  "modp4096": "16 (4096 bit)"
                 }
               }
             }
@@ -254,19 +254,18 @@
           },
           {
             "name": "pfs",
-            "value": "5",
+            "value": "modp1536",
             "input": {
               "type": "select",
               "title": "PFS Group",
               "collection": {
                 "items": {
-                  "5": "5 (1536 bit)",
+                  "modp1536": "5 (1536 bit)",
                   "off": "off",
-                  "1": "1 (768 bit)",
-                  "2": "2 (1024 bit)",
-                  "14": "14 (2048 bit)",
-                  "15": "15 (3076 bit)",
-                  "16": "16 (4096 bit)"
+                  "modp1024": "2 (1024 bit)",
+                  "modp2048": "14 (2048 bit)",
+                  "modp3072": "15 (3076 bit)",
+                  "modp4096": "16 (4096 bit)"
                 }
               }
             }
