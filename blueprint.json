@@ -22,7 +22,7 @@
         "label": "ipsec"
       }
     },
-    "timestamp": "2018-04-03T12:17:15+10:00"
+    "timestamp": "2018-04-04T10:44:44+10:00"
   },
   "software": {
     "base": {
@@ -87,8 +87,8 @@
               "type": "select",
               "collection": {
                 "items": {
-                  "ikev1": "IKEv1",
-                  "ikev2": "IKv2"
+                  "1": "IKEv1",
+                  "2": "IKEv2"
                 }
               }
             }
