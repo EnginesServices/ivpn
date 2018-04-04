@@ -22,7 +22,7 @@
         "label": "ipsec"
       }
     },
-    "timestamp": "2018-04-04T10:54:25+10:00"
+    "timestamp": "2018-04-04T12:22:47+10:00"
   },
   "software": {
     "base": {
@@ -506,6 +506,19 @@
         "name": "sad_entries",
         "label": "Security Associations",
         "return_type": "none"
+      },
+      {
+        "name": "enable_site2site_vpn",
+        "label": "Enable site 2 site VPN",
+        "return_type": "json",
+        "variables": [
+          {
+            "name": "vpn_name",
+            "input": {
+              "type": "string"
+            }
+          }
+        ]
       }
     ],
     "configurators": [
